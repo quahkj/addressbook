@@ -54,7 +54,9 @@
   <br>
   <div class="row">
     <div class="col-lg-2"><button type="button" class="btn btn-primary" (click)="showAddEmployeeDialog()">Add Employee</button></div>
-    <div class="col-lg-2"><button type="button" class="btn btn-primary" (click)="showDeleteEmployeeDialog()">Delete Employee</button></div>
+    <div class="col-lg-2"><button type="button" class="btn btn-primary"
+                                  (click)="showDeleteEmployeeDialog()"
+                                  [disabled]="isEmployeesEmpty() || !selectedEmployee">Delete Employee</button></div>
   </div>
 </div>
 
@@ -63,7 +65,11 @@
     Add employee
   </p-header>
     <div class="ui-grid-row">
-      <div class="ui-grid-col-4"><label for="firstName">First Name:</label></div>
+      <div class="ui-grid-col-12">* - mandatory field</div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="firstName">First Name*:</label></div>
       <div class="ui-grid-col-8">
         <!--<input #fnInput pInputText id="firstName" [ngModel]="newEmployee?.firstName" (ngModelChange)="newEmployee.firstName = $event" />-->
         <input pInputText id="firstName" [(ngModel)]="newEmployee.firstName" />
@@ -71,27 +77,27 @@
     </div>
     <br>
     <div class="ui-grid-row">
-      <div class="ui-grid-col-4"><label for="lastName">Last Name:</label></div>
+      <div class="ui-grid-col-4"><label for="lastName">Last Name*:</label></div>
       <div class="ui-grid-col-8">
         <input pInputText id="lastName" [(ngModel)]="newEmployee.lastName" />
       </div>
     </div>
     <br>
     <div class="ui-grid-row">
-      <div class="ui-grid-col-4"><label for="department">Department:</label></div>
+      <div class="ui-grid-col-4"><label for="department">Department*:</label></div>
       <div class="ui-grid-col-8">
         <input pInputText id="department" [(ngModel)]="newEmployee.department" />
       </div>
     </div>
     <br>
     <div class="ui-grid-row">
-      <div class="ui-grid-col-4"><label for="phone">Phone:</label></div>
+      <div class="ui-grid-col-4"><label for="phone">Phone*:</label></div>
       <div class="ui-grid-col-8">
-        <input pInputText id="phone" [(ngModel)]="newEmployee.phone" />
+        <input pInputText id="phone" [(ngModel)]="newEmployee.phone" (keypress)="filterNonNumericKeys($event)" />
       </div>
     </div>
   <p-footer>
-    <button type="button" pButton (click)="addEmployee()" label="Add"></button>
+    <button type="button" pButton (click)="addEmployee()" label="Add" [disabled]="!isAddEmpInputValid()"></button>
     <button type="button" pButton (click)="showAddEmployee=false" label="Cancel"></button>
   </p-footer>
 </p-dialog>
