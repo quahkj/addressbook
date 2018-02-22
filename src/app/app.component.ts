@@ -52,4 +52,22 @@ export class AppComponent implements OnInit {
     this.employees = this.employeeService.deleteEmployee(this.selectedEmployee);
   }
 
+  isAddEmpInputValid(): boolean {
+    if(this.newEmployee.firstName === '' || this.newEmployee.lastName === ''
+       || this.newEmployee.department === '' || this.newEmployee.phone === '') {
+      return false;
+    }
+    return true;
+  }
+
+  isEmployeesEmpty(): boolean {
+    return this.employees.length === 0 ? true : false;
+  }
+
+  filterNonNumericKeys(event: any): void {
+    if (event.which <= 48 || event.which >= 57) { // only accept number
+      event.preventDefault();
+    }
+  }
+
 }
