@@ -6,6 +6,11 @@
     <div class="col-lg-12"><hr/></div>
   </div>
   <div class="row">
+    <div class="col-lg-12"><p>Instruction: To add a record, click on 'Add Employee' button and fill up the form. Select a
+      record on the table and click 'Delete Employee' button to delete a record. The employee can be searched via first name,
+      last name or department column. Please enter the search key into the text box under each column.</p></div>
+  </div>
+  <div class="row">
     <div class="col-lg-12">
       <p-table #dt [value]="employees" [columns]="cols" selectionMode="single" [(selection)]="selectedEmployee">
         <ng-template pTemplate="caption">
