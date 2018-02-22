@@ -1,8 +1,11 @@
 # Addressbook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+Please make sure you have installed node, npm and angular cli into the machine before proceed further.
 
-## Development server
+## Development
+
+Go to root directory of AddressBook and run `npm install`. It will download all libraries.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
